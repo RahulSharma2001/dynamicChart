@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Data Visualization</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div>
+      <canvas id="myChart"></canvas>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+      const ctx = document.getElementById("myChart");
+
+      let chart = new Chart(ctx, {
+        type: "line",
+        data: {
+          labels: [],
+          datasets: [
+            {
+              label: "Values",
+              data: [],
+              backgroundColor: "red",
+              borderWidth: 2,
+            },
+          ],
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true,
+            },
+          },
+        },
+      });
+
+      function add() {
+        let data = Math.random() * 100;
+        chart.data.labels.push(chart.data.labels.length);
+        chart.data.datasets[0].data.push(data);
+        chart.update(); // Update the chart
+      }
+
+      setInterval(add, 2000);
+
+      anime({
+        targets: "#myChart",
+
+        borderRadius: ["0%", "100%", "0%"],
+        duration: 1500,
+        loop: 1,
+        easing: "easeInOutQuad",
+      });
+    </script>
+  </body>
+</html>

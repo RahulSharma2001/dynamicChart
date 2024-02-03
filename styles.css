@@ -1,0 +1,11 @@
+body {
+    height: 98dvh;
+    display: flex;
+}
+
+div {
+    margin: auto;
+    width: 50%;
+    max-height: 50vh;
+    border-radius: 100%;
+}
